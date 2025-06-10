@@ -8,7 +8,7 @@ This project demonstrates deploying a containerized Django web application to AW
 - **Helm** – Package manager for Kubernetes
 - **AWS Secrets via Kubernetes** – Secure environment configuration
 - **Docker & ECR** – Image build and registry
-- **Terraform (optional)** – Infrastructure provisioning
+- **Terraform** – (https://github.com/JustinRuiz321/devops-django-tf)
 
 ---
 
