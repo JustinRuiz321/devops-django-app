@@ -1,0 +1,48 @@
+replicaCount: 2
+
+image:
+  repository: 246826784096.dkr.ecr.us-east-1.amazonaws.com/mysite-app
+  tag: "v1.0.4"
+  pullPolicy: Always
+
+service:
+  type: LoadBalancer
+  port: 8000
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "100m"
+  limits:
+    memory: "512Mi"
+    cpu: "500m"
+
+env:
+  allowedHosts: "[\"af5626450bbb34549b0cb02aa4231729-1976325058.us-east-1.elb.amazonaws.com\", \"af5626450bbb34549b0cb02aa4231729-1976325058.us-east-1.elb.amazonaws.com:8000\"]"
+  db:
+    host: mysite-db.c3468c2a4r09.us-east-1.rds.amazonaws.com
+    port: 3306
+    name: mysite
+    user: jruiz
+    password: password123
+
+serviceAccount:
+  create: true
+  name: ""
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: mysite.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
